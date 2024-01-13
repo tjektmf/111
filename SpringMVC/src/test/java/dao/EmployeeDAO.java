@@ -19,7 +19,7 @@ public class EmployeeDAO {
 	public static String driverPath = "oracle.jdbc.driver.OracleDriver";
 	public static String url = "jdbc:oracle:thin:@localhost:1521:XE";
 	public static String id = "hr";
-	public static String pw = "1234";
+	public static String pw = "hr";
 
 	static {
 		try {
@@ -36,7 +36,7 @@ public class EmployeeDAO {
 
 	
 	
-	EmployeeDTO dto = new EmployeeDTO();
+	EmployeeDTO dto= new EmployeeDTO();
 	
 	@Test
 	public List getEmpByDept(int data) {
@@ -49,8 +49,8 @@ public class EmployeeDAO {
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				list.add(rs.getInt("department_id"));
-				dto.setDepartment_id(rs.getInt("department_id"));
-				list2.add(dto);
+			//	dto.setDepartment_id(rs.getInt("department_id"));
+			//	list2.add(dto);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

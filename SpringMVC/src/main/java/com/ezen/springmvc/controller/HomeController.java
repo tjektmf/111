@@ -48,6 +48,7 @@ public class HomeController {
 		log.info(coffee);
 
 		// @NonNull 필드에 null을 넣으려는 경우 익셉션 발생
+		coffee.getCoffee_id();
 		try {
 			coffee.setCoffee_id(null);
 		} catch (NullPointerException e) {

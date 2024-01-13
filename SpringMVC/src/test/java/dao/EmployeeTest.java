@@ -4,13 +4,16 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class EmployeeTest {
 	
-	EmployeeDAO dao = new EmployeeDAO();
-	EmployeeDAO dto = new EmployeeDAO();
+	
+	EmployeeDAO dao= new EmployeeDAO();
+	
+	EmployeeDAO dto= new EmployeeDAO();
 	
 	
 	@Test
