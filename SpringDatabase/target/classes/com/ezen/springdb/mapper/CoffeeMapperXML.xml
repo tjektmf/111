@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.springdb.mapper.CoffeeMapperXML">
+
+<!-- 
+select, insert, update, delete 각 쿼리문에 해당하는 태그가 존재하며
+각 태그의 id는 XML.java 파일의 메서드의 이름과 동일하며 태그 사이에 쿼리문이 위치함
+-->
+	<select id="getAll" resultType="com.ezen.springdb.dto.CoffeeDTO">
+		select * from coffee
+	</select>
+
+	<insert id="add">
+		insert into coffee(coffee_number, coffee_name, coffee_pric, coffee_size)
+		values (coffee_number_seq.netxval, #{coffee_name},#{coffee_price}
+		,#{coffee_size})
+	</insert>
+	
+	<update id="updateCoffee">
+		update coffee set 
+			coffee_name=#{coffee_name},
+			coffee_price=#{coffee_price},
+			coffee_size=#{coffee_size}
+		where coffee_number=#{coffee_number}
+	</update>
+</mapper>

@@ -15,16 +15,16 @@ public interface CoffeeMapper {
 	@Select("select * from coffee")
 	List<CoffeeDTO> getAll();
 	
-	@Select("select * from coffee where coffee_size =#{size}")
-	CoffeeDTO get(@Param("size") String coffee_size);
+	@Select("select * from coffee where coffee_number =#{coffee_number}")
+	CoffeeDTO get(@Param("coffee_number") int coffee_number);
 	
-	@Insert("insert into coffee(coffee_name, coffee_price, coffee_size) values (#{coffee_name}, #{coffee_price}, #{coffee_size})")
+	@Insert("insert into coffee(coffee_number, coffee_name, coffee_price, coffee_size) values (coffee_number_seq.nextval, #{coffee_name}, #{coffee_price}, #{coffee_size})")
 	int add(CoffeeDTO dto);
 	
-	@Delete("delete from coffee where coffee_size =#{size}")
-	int delete(@Param("size") String coffee_size);
+	@Delete("delete from coffee where coffee_number =#{coffee_number}")
+	int delete(@Param("coffee_number") int coffee_number);
 	
-	@Update("update coffee set coffee_name=#{coffee_name}, coffee_price=#{coffee_price}, coffee_size=#{coffee_size}")
+	@Update("update coffee set coffee_name=#{coffee_name}, coffee_price=#{coffee_price}, coffee_size=#{coffee_size} where coffee_number =#{coffee_number}")
 	int update(CoffeeDTO dto);
 
 }

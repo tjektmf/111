@@ -14,17 +14,21 @@
 	<table border="1">
 
 		<tr>
-			<td>coffee_name</td>
-			<td>coffee_price</td>
-			<td>coffee_size</td>
+			<th>coffee_number</th>
+			<th>coffee_name</th>
+			<th>coffee_price</th>
+			<th>coffee_size</th>
+			<th>ㅇㅅㅇ</th>
 
 		</tr>
 
 		<c:forEach items="${coffee}" var="coffee">
 			<tr>
+				<td>${coffee.coffee_number}</td>
 				<td>${coffee.coffee_name}</td>
 				<td>${coffee.coffee_price}</td>
 				<td>${coffee.coffee_size}</td>
+			<th><button onclick="location.href='./update?coffee_number=${coffee.coffee_number}';">수정</button></th>
 			</tr>
 		</c:forEach>
 
