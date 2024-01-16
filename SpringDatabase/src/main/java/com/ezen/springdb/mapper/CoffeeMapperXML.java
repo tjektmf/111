@@ -12,7 +12,7 @@ public interface CoffeeMapperXML {
 
 	int add(CoffeeDTO dto);
 	
-	int updateCoffee(CoffeeDTO dto);
+	int update(CoffeeDTO dto);
 	
 	int delete(int coffee_number);
 
