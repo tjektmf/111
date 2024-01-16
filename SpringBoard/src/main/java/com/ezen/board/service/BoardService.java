@@ -10,4 +10,9 @@ public interface BoardService {
 	
 	int add(BoardDTO dto);
 
+	int update(BoardDTO dto);
+	
+	int updateForm(Model model, int board_id);
+	
+	
 }

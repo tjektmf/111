@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ezen.board.dto.BoardDTO;
 import com.ezen.board.service.BoardService;
 
 import lombok.extern.log4j.Log4j;
@@ -32,12 +33,11 @@ public class TableController {
 	}
 	
 	@PostMapping("/spring/table")
-	public String postTable(Model model) {
+	public String postTable(BoardDTO dto, Model model) {
 		log.info("POST table");
+		log.info(dto);
+		boardservice.add(dto);
 		boardservice.list(model);
-		return "/spring/table";
+		return "redirect:/spring/table";
 	}
-	
-	
-	
 }

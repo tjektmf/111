@@ -11,9 +11,19 @@
 	<insert id="add">
 		insert into myboard(board_id, board_title, board_content, board_password,
 		board_writer)
-		values(board_id_seq.nextval, #{board_title}, #{board_content}, #{board_password}, #{board_writer})
-
+		values (myboard_id_seq.nextval, #{board_title}, #{board_content}, #{board_password}, #{board_writer})
 	</insert>
+	
+	<select id="get" resultType="com.ezen.board.dto.BoardDTO">
+		select * from myboard where board_id = #{board_id}
+	</select>
+	
+	<update id="update">
+		update myboard set 
+		board_title = #{board_title}, board_content = #{board_content}, board_password = #{board_password}
+		where board_id = #{board_id}
+	</update>
+	
 
 </mapper>
 

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ㅇㅅㅇ/</title>
-<link rel="stylesheet" href="/resources/board/css/write.css" />
+<link rel="stylesheet" href="/css/write.css" />
 </head>
 <body>
 	<h2>write</h2>
@@ -14,17 +14,20 @@
 	<form action="./table" method="post">
 <div id="main">
 		<div id="member">
-			<div>id</div>
+			<div>ID</div>
 			<div>
-				<input id="board_writer" type="text" placeholder="이름" />
+				<input name="board_writer" type="text" placeholder="이름" />
 			</div>
-			<div>pw</div>
+			<div>PW</div>
 			<div>
-				<input id="board_password" type="password" placeholder="비밀번호" />
-		</div>
+				<input name="board_password" type="password" placeholder="비밀번호" />
+			</div>
 			</div>
 			<div>
-				<input id=board_context type="text" placeholder="할말" />
+				<input name="board_title" type="text" placeholder="제목" />
+			</div>
+			<div>
+				<textarea name="board_content" rows="3" cols="20" placeholder="할말"></textarea>
 			</div>
 			<div><button type="submit">글쓰기</button></div>
 </div>

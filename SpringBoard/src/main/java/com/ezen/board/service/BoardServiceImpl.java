@@ -29,5 +29,19 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.add(dto);
 		return 1;
 	}
+	
+	@Override
+	public int update(BoardDTO dto) {
+		
+		return 1;
+	}
+	
+	@Override
+	public int updateForm(Model model, int board_id) {
+		BoardDTO board = boardMapper.get(board_id);
+		model.addAttribute("board", board);
+		
+		return 1;
+	}
 
 }

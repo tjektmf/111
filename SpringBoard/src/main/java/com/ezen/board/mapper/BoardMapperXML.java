@@ -7,6 +7,13 @@ import com.ezen.board.dto.BoardDTO;
 public interface BoardMapperXML {
 	
 	List<BoardDTO> getAll();
+	
+	BoardDTO get(int board_id);
+	
 	int add(BoardDTO dto);
+	
+	int update(BoardDTO dto);
+	
+	
 
 }
