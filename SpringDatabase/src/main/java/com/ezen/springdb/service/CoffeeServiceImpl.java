@@ -42,13 +42,11 @@ public class CoffeeServiceImpl implements CoffeeService {
 	@Override
 	public void list(Model model) {
 		List<CoffeeDTO> list = coffeeMapper.getAll();
-		
 		model.addAttribute("coffee", list);
-		
 	}
 	
 	@Override
-	public int update(Model model, CoffeeDTO dto) {
+	public int update(CoffeeDTO dto) {
 		coffeeMapper.update(dto);
 		return 0;
 	}

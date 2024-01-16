@@ -14,19 +14,19 @@ select, insert, update, delete 각 쿼리문에 해당하는 태그가 존재하
 
 	<insert id="add">
 		insert into coffee(coffee_number, coffee_name, coffee_pric, coffee_size)
-		values (coffee_number_seq.netxval, #{coffee_name},#{coffee_price}
-		,#{coffee_size})
+		values (coffee_number_seq.netxval, #{coffee_name}, #{coffee_price}
+		, #{coffee_size})
 	</insert>
 	
 	<select id="get" resultType="com.ezen.springdb.dto.CoffeeDTO">
-		select * from coffee where coffee_number =#{coffee_number}
+		select * from coffee where coffee_number = #{coffee_number}
 	</select>
 	
 	<update id="update">
 		update coffee set 
-			coffee_name=#{coffee_name},
-			coffee_price=#{coffee_price},
-			coffee_size=#{coffee_size}
-		where coffee_number=#{coffee_number}
+			coffee_name= #{coffee_name},
+			coffee_price= #{coffee_price},
+			coffee_size= #{coffee_size}
+		where coffee_number= #{coffee_number}
 	</update>
 </mapper>

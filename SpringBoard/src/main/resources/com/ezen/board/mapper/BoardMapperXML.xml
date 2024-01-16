@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.board.mapper.BoardMapperXML">
+
+	<select id="getAll" resultType="com.ezen.board.dto.BoardDTO">
+		select * from myboard
+	</select>
+
+	<insert id="add">
+		insert into myboard(board_id, board_title, board_content, board_password,
+		board_writer)
+		values(board_id_seq.nextval, #{board_title}, #{board_content}, #{board_password}, #{board_writer})
+
+	</insert>
+
+</mapper>
+
+<!-- private int board_id; private String board_title; private String board_content; 
+	private String board_password; private String board_writer; private int view_count; 
+	private Date write_date; -->

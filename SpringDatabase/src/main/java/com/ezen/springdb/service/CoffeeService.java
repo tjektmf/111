@@ -10,5 +10,5 @@ public interface CoffeeService {
 
 	void list(Model model);
 	
-	int update(Model model, CoffeeDTO dto);
+	int update(CoffeeDTO dto);
 }

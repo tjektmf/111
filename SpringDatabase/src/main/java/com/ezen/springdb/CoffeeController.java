@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezen.springdb.dto.CoffeeDTO;
 import com.ezen.springdb.mapper.CoffeeMapper;
@@ -19,13 +20,6 @@ import lombok.extern.log4j.Log4j;
 @Controller
 public class CoffeeController {
 
-	/*
-	@Autowired
-	CoffeeMapper coffeeMapper;
-	@Autowired
-	CoffeeMapperXML coffeeMapperXML;
-*/
-	
 	@Autowired
 	CoffeeService coffeeService;
 
@@ -56,9 +50,15 @@ public class CoffeeController {
 	}
 
 	@PostMapping("/coffee/update")
-	public String update(Model model, CoffeeDTO dto) {
+	public String update(CoffeeDTO dto, RedirectAttributes rattr) {
 		log.info("POST_update");
-		coffeeService.update(model, dto);
-		return "redirect:/coffee/list";
+		int result = coffeeService.update(dto);
+		
+		if(result==1) {
+			return "redirect:/coffee/list";			
+		} else {
+			rattr.addAttribute("coffee", dto.getCoffee_number());
+			return "redirect:/coffee/update";
+		}
 	}
 }
