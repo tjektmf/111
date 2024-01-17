@@ -62,9 +62,9 @@
 	
 	<form action="./replyAdd" method="post">
 		ID <input name="reply_writer" type="text" size="5" />
-		PW <input name="reply_password"type="password"  size="5"/>
+		PW <input name="reply_password"type="password"  size="5"/><br />
 		<textarea name= "reply_content" rows="2" cols="30"></textarea>
-		<input name="board_id" type="hidden" value="${board.board_id}" />
+		<input name="board_id" type="hidden" value="${board.board_id}" /> <br />
 		<input type="text"  placeholder="${board.board_id}"/>
 	<button type="submit">댓글쓰기</button>
 	</form>

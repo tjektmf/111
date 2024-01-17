@@ -18,7 +18,7 @@
 			<div class="board-id">${board.board_id}</div>
 			<div class="board-title">
 				<a href="./detail?board_id=${board.board_id}">${board.board_title}</a> 
-				<a onclick="window.open('./replyPop?board_id=${board.board_id}', '_blank', 'width=400, height=400')">[댓글]</a></div>
+				<a onclick="window.open('./replyPop?board_id=${board.board_id}', '_blank', 'width=600, height=300')">[댓글]</a></div>
 			<div class="board-writer">${board.board_writer}</div>
 			<div class="write-date">${board.write_date}</div>
 			<div class="view-count">${board.view_count}</div>
@@ -27,7 +27,6 @@
 </c:if>
 <hr />
 <a href="./write">글쓰기</a>
-<form action="" method="post" id="reply"></form>
 
 </body>
 </html>

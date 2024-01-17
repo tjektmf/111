@@ -32,7 +32,7 @@ public class BoardController {
 	}
 
 	@GetMapping("/list")
-	public String list(Model model) {
+	public String list(Model model, Integer board_id) {
 		log.info("GET : /board/list");
 		boardservice.list(model);
 		log.info("GET : list on");
@@ -68,8 +68,9 @@ public class BoardController {
 	}
 	
 	@GetMapping("/replyPop")
-	public String replyPop() {
+	public String replyPop(Model model, int board_id) {
 		log.info("GET : /board/replyPop");
+		replyservice.getAll(board_id, model);
 		return "/board/replyPop";
 	}
 	
