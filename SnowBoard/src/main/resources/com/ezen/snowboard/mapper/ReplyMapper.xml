@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.snowboard.mapper.ReplyMapper">
+
+	<select id="count" resultType="com.ezen.snowboard.dto.ReplyDTO">
+		select * from myreply where
+		board_id = #{board_id}
+	</select>
+
+	<insert id="add">
+		insert into myreply(reply_id, board_id, reply_writer, reply_content,
+		reply_password)
+		values(reply_id_seq.nextval, #{board_id}, #{reply_writer}, #{reply_content},#{reply_password})
+	</insert>
+
+	<select id="getAll">
+		select * from myreply where board_id = #{board_id}
+	</select>
+
+</mapper>
+<!-- private Integer reply_id; // PK private Integer board_id; // FK private 
+	String reply_writer; private String reply_content; private String reply_password; 
+	private Date reply_date; -->

@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+body {
+	background-color: gray;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.board-title>a {
+	text-decoration: none;
+}
+
+.board-title>a:link {
+	color: yellow;
+}
+
+.board-title>a:visited {
+	color: green;
+}
+
+.board-title {
+	cursor: pointer;
+}
+
+.board-list {
+	display: grid;
+	grid-template-columns: 1fr 2fr 2fr 4fr 2fr;
+}
+
+.board-list>div {
+	border-bottom: 1px red solid;
+	padding: 1px
+}
