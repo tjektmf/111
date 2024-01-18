@@ -7,6 +7,10 @@
     select * from myboard order by board_id desc
   </select>
   
+  <select id="getAllwithReplyCount" resultType="com.ezen.snowboard.dto.BoardDTO">
+  select b.*, ( select count(reply_id) from myreply r where b.board_id = r.board_id) as reply_count from myboard b order by board_id desc
+  </select>
+  
   <select id="get" resultType="com.ezen.snowboard.dto.BoardDTO">
   	select * from myboard where board_id = #{board_id}
   </select>

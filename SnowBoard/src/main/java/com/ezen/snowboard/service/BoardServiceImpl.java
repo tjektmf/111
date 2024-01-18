@@ -19,7 +19,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void list(Model model) {
-		model.addAttribute("boards", boardMapper.getAll());
+		model.addAttribute("boards", boardMapper.getAllwithReplyCount());
 	}
 
 	@Override
