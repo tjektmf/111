@@ -107,7 +107,6 @@ btn3.addEventListener('click', (e) => {
     xhttp.send();
 })
 
-
 const json1 = document.getElementById('json1');
 
 json1.addEventListener('click', (e) => {
@@ -134,6 +133,8 @@ json1.addEventListener('click', (e) => {
                 console.log('2 : ', obj[i].first_name);
                 console.log('3 : ', obj[i].last_name);
             }
+            // 랜덤으로 뽑은 10명의 정보가 누적이 되지 않게함
+            emps2.innerText = '';
 
             for (let i = 0; i < obj.length; i++) {
                 const makeDiv1 = document.createElement('div');

@@ -25,7 +25,9 @@
 	3. <mybatis-spring:scan> 기능으로 Mapper 들이 위치할 패키지를 지정
 		(mybatis-spring 의 버전 2.0.7)
 
-		// 매퍼가 위치한 패키지를 지정함 
+		매퍼가 위치한 패키지를 지정함 
+		ctrl + space 하면 편하게 태그 불러올 수 있음 안외워도 됨
+		<mybatis-spring:scan base-package=""/> 이렇게 태그가 나오면 패키지 이름만 입력해주면 됨
 		<mybatis-spring:scan base-package="com.ezen.springdb.mapper"/>
 		
 	버전이 높은게 중요한게 아님 획기적인 기능이 추가되는게 아닌 한 잘 돌아가는거 굳이 버전을 올리지 않음

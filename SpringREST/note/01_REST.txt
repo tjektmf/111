@@ -18,6 +18,10 @@
 	- Delete (DELETE)
 		ex) DELETE:/employee/130 (130번 사원의 정보를 삭제)
 		
+	대충 이렇게 쓰자는 개발자간 약속이 있음 
+	DELETE:/employee/130 대충 이 코드를 보면 130번 임플로이를 삭제하겠다는 내용이겠거니
+	라는 생각을 하게되고 또한 실제로 그렇게 작동이 될 것이라는 생각
+		
 # Spring REST
 
 	- @RestController : 해당 클래스가 RestController임을 표시

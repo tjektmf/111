@@ -1,17 +1,22 @@
 package com.ezen.springrest.controller;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ezen.springrest.dto.EmployeeDTO;
+import com.ezen.springrest.service.EmployeeService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -20,6 +25,9 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/rest")
 @RestController
 public class RestSampleController {
+	
+	@Autowired
+	EmployeeService employeeService;
 
 	// produces : 응답 헤더의 Context-type을 변경함 (브라우저의 해석 방식 변경)
 
@@ -57,6 +65,7 @@ public class RestSampleController {
 		emp.setLast_name("김");
 		log.info(emp);
 		return emp;
+		
 	}
 
 	// jackson-dataformat-xml : DTO를 XML 형식 문자열로 응답해주는 라이브러리
@@ -100,7 +109,7 @@ public class RestSampleController {
 	}
 
 	@GetMapping(value = "/v7", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<EmployeeDTO> value7() {
+	public List<EmployeeDTO> value7(Model model) {
 
 		List<EmployeeDTO> emps = new ArrayList<>();
 		EmployeeDTO emp1 = new EmployeeDTO();
@@ -110,25 +119,53 @@ public class RestSampleController {
 		emp1.setLast_name("세이돈1");
 
 		EmployeeDTO emp2 = new EmployeeDTO();
-
 		emp2.setEmployee_id(222);
 		emp2.setFirst_name("포2");
 		emp2.setLast_name("세이돈2");
 
 		EmployeeDTO emp3 = new EmployeeDTO();
-
 		emp3.setEmployee_id(223);
 		emp3.setFirst_name("포3");
 		emp3.setLast_name("세이돈3");
 		emps.add(emp1);
 		emps.add(emp2);
 		emps.add(emp3);
-		return emps;
+		
+		EmployeeDTO emp4 = new EmployeeDTO();
+		emp4.setEmployee_id(224);
+		emp4.setFirst_name("포4");
+		emp4.setLast_name("세이돈4");
+		
+		
+		EmployeeDTO emp5 = new EmployeeDTO();
+		emp5.setEmployee_id(225);
+		emp5.setFirst_name("포5");
+		emp5.setLast_name("세이돈5");
+		
+		
+		EmployeeDTO emp6 = new EmployeeDTO();
+		emp6.setEmployee_id(226);
+		emp6.setFirst_name("포6");
+		emp6.setLast_name("세이돈6");
+		emps.add(emp4);
+		emps.add(emp5);
+		emps.add(emp6);
+		
+		Collections.shuffle(emps);
+		
+		
+		
+		
+		employeeService.list10(model);
+		List<EmployeeDTO> ans = (List<EmployeeDTO>)model.getAttribute("list10");
+		log.info(ans);
+		
+		return ans;
 	}
 	
 	// jackson-databind 는 List<DTO>로 리턴해도 잘 변환해줌
 		@GetMapping(value = "/v8", produces = MediaType.APPLICATION_XML_VALUE)
-		public List<EmployeeDTO> value8() {
+		public List<EmployeeDTO> value8(Model model) {
 
 			List<EmployeeDTO> emps = new ArrayList<>();
 			EmployeeDTO emp1 = new EmployeeDTO();
@@ -151,7 +188,12 @@ public class RestSampleController {
 			emps.add(emp1);
 			emps.add(emp2);
 			emps.add(emp3);
-			return emps;
+			
+			employeeService.list10(model);
+			List<EmployeeDTO> ans = (List<EmployeeDTO>)model.getAttribute("list10");
+			log.info(ans);
+			
+			return ans;
 		}
 
 	@GetMapping("/entity1")
