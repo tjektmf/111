@@ -2,11 +2,12 @@ const out = document.getElementById('out');
 const btn1 = document.getElementById('btn1');
 const btn2 = document.getElementById('btn2'); // JSON
 const btn3 = document.getElementById('btn3'); // XML
+const btn4 = document.getElementById('btn4'); // PUT방식 xhttp요청
 const emps = document.getElementById('employees');
 const emps2 = document.getElementById('employees2');
 
 btn1.addEventListener('click', (e) => {
-    // 1. 0Ajax 요청 객체 생성
+    // 1. Ajax 요청 객체 생성
     const xhttp = new XMLHttpRequest();
 
     // 2. readystatechange 이벤트 리스너 설정 
@@ -183,15 +184,155 @@ xml1.addEventListener('click', (e) => {
                     const makeDiv3 = document.createElement('div');
 
                     makeDiv1.innerText += cargo2[i].children[j].innerHTML;
-             //       makeDiv2.innerText += 
-             //       makeDiv3.innerText += obj[i].last_name;
+                    //       makeDiv2.innerText += 
+                    //       makeDiv3.innerText += obj[i].last_name;
                     emps2.appendChild(makeDiv1);
-             //       emps2.appendChild(makeDiv2);
-             //       emps2.appendChild(makeDiv3);
+                    //       emps2.appendChild(makeDiv2);
+                    //       emps2.appendChild(makeDiv3);
                 }
             }
         }
     })
     xhttp.open('get', './rest/v8');
     xhttp.send();
+});
+
+btn4.addEventListener('click', (e) => {
+    const xhttp = new XMLHttpRequest();
+    xhttp.addEventListener('readystatechange', (e) => {
+        console.log('응답받은 상태 코드 : ', xhttp.status)
+
+        if (xhttp.readyState === 4) {
+            if (xhttp.status == 200) {
+                console.log('성공');
+                console.log(JSON.parse(xhttp.responseText));
+            } else if (xhttp.status == 400) {
+                console.log('실패');
+                alert('망함');
+            }
+        }
+    });
+
+    // <input> 의 데이터로 생성한 객체라고 가정
+    const userData = {
+        employee_id: 188,
+        first_name: 'West',
+        last_name: 'Life'
+    };
+    xhttp.open('put', './rest/emp');
+
+    // 데이터를 문자열로 보내야 직렬화가 가능함
+    // 요청에 함께 실려가는 문자열이 어떤 내용인지 content-type을 통해 설명해야 한다
+    // JSON.parse(Object) : JSON 형식 문자열을 JS 객체로 변환해주는 메서드
+    // JSON.stringify(Object) : JS 객체를 JSON 형식 문자열로 변환해주는 메서드
+    xhttp.setRequestHeader('content-type', 'application/json');
+    xhttp.send(JSON.stringify(userData));
+});
+
+const coffee1 = document.getElementById('coffee1');
+const coffee2 = document.getElementById('coffee2');
+const coffee3 = document.getElementById('coffee3');
+
+coffee1.addEventListener('click', (e) => {
+    const xhttp = new XMLHttpRequest();
+    xhttp.addEventListener('readystatechange', (e) => {
+        if (xhttp.status == 200 && xhttp.readyState == 4) {
+            console.log('성공1');
+        }
+    })
+    const coffeeData = {
+        coffee_name: '아아',
+        coffee_price: 1600,
+        coffee_size: 'small'
+    }
+    xhttp.open('post', './rest/postCafe');
+    xhttp.setRequestHeader('content-type', 'application/json');
+    xhttp.send(JSON.stringify(coffeeData));
+})
+
+coffee2.addEventListener('click', (e) => {
+    const xhttp = new XMLHttpRequest();
+    xhttp.addEventListener('readystatechange', (e) => {
+        if (xhttp.status == 200 && xhttp.readyState == 4) {
+            console.log('성공2');
+        }
+    })
+    const coffeeData = {
+        coffee_number: 1,
+        coffee_name: '뜨아',
+        coffee_price: 486,
+        coffee_size: 'MEGA'
+    }
+    xhttp.open('put', './rest/putCafe');
+    xhttp.setRequestHeader('content-type', 'application/json');
+    xhttp.send(JSON.stringify(coffeeData));
+})
+
+coffee3.addEventListener('click', (e) => {
+    const xhttp = new XMLHttpRequest();
+    xhttp.addEventListener('readystatechange', (e) => {
+        if (xhttp.status == 200 && xhttp.readyState == 4) {
+            console.log('성공3');
+        }
+    })
+
+    const coffeeData = {
+        coffee_number: 1
+    }
+    xhttp.open('delete', './rest/deleteCafe');
+    xhttp.setRequestHeader('content-type', 'application/json');
+    xhttp.send(JSON.stringify(coffeeData));
+})
+
+const quiz2_1 = document.getElementById('quiz2_1');
+const quiz2_2 = document.getElementById('quiz2_2');
+const modifyCoffeeId = document.getElementById('modify-coffee_number');
+const quiz2_3 = document.getElementById('quiz2_3');
+
+quiz2_1.addEventListener('click', (e) => {
+    const xhttp = new XMLHttpRequest();
+
+    const newCoffee = {
+        coffee_name: '바라',
+        coffee_size: 'TERA',
+        coffee_price: 3200
+    }
+
+    xhttp.addEventListener('readystatechange', (e) => {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+            console.log('insert');
+        }
+    });
+
+    xhttp.open('POST', './rest/cafe2')
+    xhttp.setRequestHeader('content-type', 'application/json');
+    xhttp.send();
+})
+
+quiz2_2.addEventListener('click', (e) => {
+    const xhttp = new XMLHttpRequest();
+
+    const cid = modifyCoffeeId.value;
+
+    if (cid === null || cid == '' || cid < 0) {
+        alert('숫자가 이상해');
+        return;
+    }
+
+    const modifyCoffee = {
+
+        coffee_number: cid,
+        coffee_name: '코코아',
+        coffee_price: 17,
+        coffee_size: 'tall'
+    }
+    xhttp.addEventListener('readystatechange', (e) => {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+            console.log('update complete');
+        }
+    })
+    // 보내는 타입이 PUT POST GET 등 다르면 cafe2로 URI가 같아도 도착지는 다름
+    xhttp.open('PUT', `./rest/cafe2/${cid}`);
+    xhttp.setRequestHeader('content-type', 'application/json');
+    xhttp.send(JSON.stringify(modifyCoffee))
 })

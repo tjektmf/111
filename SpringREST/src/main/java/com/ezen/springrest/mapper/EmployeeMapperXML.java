@@ -7,5 +7,5 @@ import com.ezen.springrest.dto.EmployeeDTO;
 public interface EmployeeMapperXML {
 	
 	List<EmployeeDTO> getAll();
-
+	
 }
