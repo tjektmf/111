@@ -49,6 +49,7 @@
 	<button id="btn2">2(JSON)</button>
 	<button id="btn3">3(XML)</button>
 	<button id="btn4">4(PUT방식 xhttp요청)</button>
+	<button id="btn5">5</button>
 
 
 	<script src="${homeJS}"></script>

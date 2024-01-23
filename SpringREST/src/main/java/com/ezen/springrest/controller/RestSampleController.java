@@ -263,7 +263,7 @@ public class RestSampleController {
 
 	@PutMapping("putCafe")
 	public ResponseEntity<CoffeeDTO> putCafe(@RequestBody CoffeeDTO dto) {
-	//	coffeeService.update(dto);
+		coffeeService.update(dto);
 		log.info("PUT, update : " + dto);
 		return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
@@ -295,4 +295,6 @@ public class RestSampleController {
 		
 		return ResponseEntity.ok("String Type");
 	}
+	
+	
 }
