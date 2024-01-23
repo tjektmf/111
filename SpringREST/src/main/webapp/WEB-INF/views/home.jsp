@@ -17,6 +17,8 @@
 		quiz2. REST 방식으로 coffee 테이블에 insert, update, delete 를 구현
 	</h3>
 	
+	<button id="loa">로아</button>
+	
 	<form action="/rest/putCafe" id="putForm"></form>
 	<form action="/rest/deleteCafe" id="delForm"></form>
 	<button id="coffee1">POST</button>

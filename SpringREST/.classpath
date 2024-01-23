@@ -36,8 +36,8 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/ds/lib/jstl-1.2.jar"/>
-	<classpathentry kind="lib" path="C:/ds/lib/ojdbc11.jar">
+	<classpathentry kind="lib" path="C:/Users/ds/Downloads/sqldeveloper/jdbc/lib/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ds/Downloads/sqldeveloper/jdbc/lib/ojdbc11.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
