@@ -335,27 +335,25 @@ quiz2_2.addEventListener('click', (e) => {
     xhttp.open('PUT', `./rest/cafe2/${cid}`);
     xhttp.setRequestHeader('content-type', 'application/json');
     xhttp.send(JSON.stringify(modifyCoffee))
-})
+});
+
+
 
 const btn5 = document.getElementById('btn5');
-
-const characterName = '서다슬';
+const APIkey = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IktYMk40TkRDSTJ5NTA5NWpjTWk5TllqY2lyZyIsImtpZCI6IktYMk40TkRDSTJ5NTA5NWpjTWk5TllqY2lyZyJ9.eyJpc3MiOiJodHRwczovL2x1ZHkuZ2FtZS5vbnN0b3ZlLmNvbSIsImF1ZCI6Imh0dHBzOi8vbHVkeS5nYW1lLm9uc3RvdmUuY29tL3Jlc291cmNlcyIsImNsaWVudF9pZCI6IjEwMDAwMDAwMDAxMjYzNTcifQ.ea4LxCxsouQnuP614kmuimHkWite6cVt-gpN-HAeNgT7NeJm7Nje6nlxom_8wICkv7zqWlvO1D8C70IscZticqgL1B-06UXe3Fp6OGn4iU8SpTl1TFCJ4j-W03DsXtekHFSbDf85kxXNraYpwZBD34bv-wvfd8K5Rt_-pAWG_cYV3Z5dpMPC_L4530LIi-w1NwuDS9CxniruRuPeWdxaEwFaVI4somz30gXh72jMsuW2ljf_fHmB9uOgnWSVNQNwXqV0CiuOHrFjgKfQVvUP_vETppsDIE1iFbfp58KNPT-r1-8MtF90Tbg_dLiOb0PJdc_q5DLL6scJVUDxfqTeMA';
 
 btn5.addEventListener('click', (e) => {
     const xmlHttpRequest = new XMLHttpRequest();
     xmlHttpRequest.addEventListener('readystatechange', (e) => {
         if (xmlHttpRequest.status == 200 && xmlHttpRequest.readyState == 4) {
-            console.log('성공2');
             console.log(xmlHttpRequest.responseText);
             console.log(JSON.parse(xmlHttpRequest.responseText));
         }
     });
-    
 
-    xmlHttpRequest.open("GET", 'https://developer-lostark.game.onstove.com/characters/서다슬/siblings', true);
+    xmlHttpRequest.open("GET", 'https://developer-lostark.game.onstove.com/characters/그대나와같다면시작인가요/siblings', true);
     xmlHttpRequest.setRequestHeader('accept', 'application/json');
-    xmlHttpRequest.setRequestHeader('authorization', 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IktYMk40TkRDSTJ5NTA5NWpjTWk5TllqY2lyZyIsImtpZCI6IktYMk40TkRDSTJ5NTA5NWpjTWk5TllqY2lyZyJ9.eyJpc3MiOiJodHRwczovL2x1ZHkuZ2FtZS5vbnN0b3ZlLmNvbSIsImF1ZCI6Imh0dHBzOi8vbHVkeS5nYW1lLm9uc3RvdmUuY29tL3Jlc291cmNlcyIsImNsaWVudF9pZCI6IjEwMDAwMDAwMDAxMjYzNTcifQ.ea4LxCxsouQnuP614kmuimHkWite6cVt-gpN-HAeNgT7NeJm7Nje6nlxom_8wICkv7zqWlvO1D8C70IscZticqgL1B-06UXe3Fp6OGn4iU8SpTl1TFCJ4j-W03DsXtekHFSbDf85kxXNraYpwZBD34bv-wvfd8K5Rt_-pAWG_cYV3Z5dpMPC_L4530LIi-w1NwuDS9CxniruRuPeWdxaEwFaVI4somz30gXh72jMsuW2ljf_fHmB9uOgnWSVNQNwXqV0CiuOHrFjgKfQVvUP_vETppsDIE1iFbfp58KNPT-r1-8MtF90Tbg_dLiOb0PJdc_q5DLL6scJVUDxfqTeMA');
+    xmlHttpRequest.setRequestHeader('authorization', 'bearer ' + APIkey);
     xmlHttpRequest.onreadystatechange = () => { };
     xmlHttpRequest.send();
 });
-
